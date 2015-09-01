@@ -69,6 +69,17 @@
     [self addButtonWithTitle:title];
 }
 
+- (NSInteger)addButtonWithTitle:(NSString *)title {
+    NSInteger buttonIndex = [super addButtonWithTitle:title];
+
+    // Ensure blocks array is equal to number of buttons.
+    while (self.blocks.count < self.numberOfButtons) {
+        self.blocks = [[NSArray arrayWithArray:self.blocks] arrayByAddingObject:NSNull.null];
+    }
+
+    return buttonIndex;
+}
+
 - (NSUInteger)buttonCount {
     return self.blocks.count;
 }
